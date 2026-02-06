@@ -1,14 +1,15 @@
 import java.util.Scanner;
 public class Main {
     static final Scanner SC = new Scanner(System.in);
+    static final char SIZE = 5;
 
     public static long operations(int a, long[][] initialMatrix) {
-        final long[][] resultMatrix = new long[5][5];
+        final long[][] resultMatrix = new long[SIZE][SIZE];
 
         long sum = 0;
-        for (int rowIndex = 0; rowIndex < 5; rowIndex++) {
+        for (int rowIndex = 0; rowIndex < SIZE; rowIndex++) {
             long max = Long.MIN_VALUE;
-            for (int colIndex = 0; colIndex < 5; colIndex++) {
+            for (int colIndex = 0; colIndex < SIZE; colIndex++) {
                 resultMatrix[rowIndex][colIndex] = a * initialMatrix[rowIndex][colIndex];
                 if (resultMatrix[rowIndex][colIndex] > max) {
                     max = resultMatrix[rowIndex][colIndex];
@@ -67,7 +68,7 @@ public class Main {
             System.out.println();
         }
 
-        long sum = operations(a, initialMatrix);
+        final long sum = operations(a, initialMatrix);
 
         System.out.println("сума найбільших елементів кожного рядка матриці = " + sum);
     }
