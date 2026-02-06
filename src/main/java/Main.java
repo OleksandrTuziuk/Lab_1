@@ -1,9 +1,9 @@
 import java.util.Scanner;
 public class Main {
-    static final Scanner sc = new Scanner(System.in);
+    static final Scanner SC = new Scanner(System.in);
 
     public static long operations(int a, long[][] initialMatrix) {
-        long[][] resultMatrix = new long[5][5];
+        final long[][] resultMatrix = new long[5][5];
 
         long sum = 0;
         for (int rowIndex = 0; rowIndex < 5; rowIndex++) {
@@ -34,7 +34,7 @@ public class Main {
         while (true) {
             try {
                 System.out.print("Введіть число a: ");
-                inputData = sc.nextLine();
+                inputData = SC.nextLine();
                 a = Integer.parseInt(inputData);
                 break;
             } catch (NumberFormatException e) {
@@ -52,23 +52,23 @@ public class Main {
             }
         }
 
-            long[][] initialMatrix = {
-                    {1, 2, 3, 4, 5},
-                    {6, 7, 8, 9, 10},
-                    {11, 12, 13, 14, 15},
-                    {16, 17, 18, 19, 20},
-                    {21, 22, 23, 24, 25}};
+        final long[][] initialMatrix = {
+                {1, 2, 3, 4, 5},
+                {6, 7, 8, 9, 10},
+                {11, 12, 13, 14, 15},
+                {16, 17, 18, 19, 20},
+                {21, 22, 23, 24, 25}};
 
-            System.out.println("Початкова матриця:");
-            for (long[] rowIndex : initialMatrix) {
-                for (long colIndex : rowIndex) {
-                    System.out.print(colIndex + " ");
-                }
-                System.out.println();
+        System.out.println("Початкова матриця:");
+        for (long[] rowIndex : initialMatrix) {
+            for (long colIndex : rowIndex) {
+                System.out.print(colIndex + " ");
             }
+            System.out.println();
+        }
 
-            long sum = operations(a, initialMatrix);
+        long sum = operations(a, initialMatrix);
 
-            System.out.println("сума найбільших елементів кожного рядка матриці = " + sum);
+        System.out.println("сума найбільших елементів кожного рядка матриці = " + sum);
     }
 }
