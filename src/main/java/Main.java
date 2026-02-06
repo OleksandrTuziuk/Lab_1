@@ -30,10 +30,27 @@ public class Main {
 
     public static void main(String[] args) {
         String inputData = "";
-        try {
-            System.out.print("Введіть число a: ");
-            inputData = sc.nextLine();
-            int a = Integer.parseInt(inputData);
+        int a;
+        while (true) {
+            try {
+                System.out.print("Введіть число a: ");
+                inputData = sc.nextLine();
+                a = Integer.parseInt(inputData);
+                break;
+            } catch (NumberFormatException e) {
+                boolean isNumber = true;
+                for (char c : inputData.toCharArray()) {
+                    if (!Character.isDigit(c)) {
+                        isNumber = false;
+                        System.out.println("Введені дані не є числом");
+                        break;
+                    }
+                }
+                if (isNumber) {
+                    System.out.println("Введене число занадто велике, або занадто мале");
+                }
+            }
+        }
 
             long[][] initialMatrix = {
                     {1, 2, 3, 4, 5},
@@ -53,20 +70,5 @@ public class Main {
             long sum = operations(a, initialMatrix);
 
             System.out.println("сума найбільших елементів кожного рядка матриці = " + sum);
-
-
-        } catch (NumberFormatException e) {
-            boolean isNumber = true;
-            for (char c : inputData.toCharArray()) {
-                if (!Character.isDigit(c)) {
-                    isNumber = false;
-                    System.out.println("Введені дані не є числом");
-                    break;
-                }
-            }
-            if (isNumber) {
-                System.out.println("Введене число занадто велике, або занадто мале");
-            }
-        }
     }
 }
