@@ -4,22 +4,76 @@
 
 <module name="Checker">
 
-    <!-- Проверки на уровне файла -->
+    <!-- ================================================= -->
+    <!-- ФАЙЛОВЫЕ ПРОВЕРКИ (НЕ TreeWalker) -->
+    <!-- ================================================= -->
+
+    <!-- Максимальная длина строки -->
     <module name="LineLength">
         <property name="max" value="100"/>
+        <property name="ignorePattern"
+                  value="^package.*|^import.*|http://|https://"/>
     </module>
 
+    <!-- Запрет табов -->
     <module name="FileTabCharacter"/>
 
-    <!-- AST-проверки -->
+    <!-- Пустая строка в конце файла -->
+    <module name="NewlineAtEndOfFile"/>
+
+    <!-- ================================================= -->
+    <!-- AST-ПРОВЕРКИ -->
+    <!-- ================================================= -->
+
     <module name="TreeWalker">
+
+        <!-- - БАЗОВАЯ СТРУКТУРА - -->
+
         <module name="NeedBraces"/>
+        <module name="EmptyBlock">
+            <property name="option" value="TEXT"/>
+        </module>
+
+        <module name="OneStatementPerLine"/>
+
+        <!-- ИМПОРТЫ - -->
+
         <module name="AvoidStarImport"/>
         <module name="UnusedImports"/>
+        <module name="RedundantImport"/>
 
+        <!-- ИМЕНА (Java Code Conventions) -->
+
+        <module name="PackageName"/>
         <module name="ClassName"/>
+        <module name="InterfaceName"/>
         <module name="MethodName"/>
+        <module name="ParameterName"/>
         <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <module name="ConstantName"/>
+
+        <!--- ФОРМАТИРОВАНИЕ -->
+
+        <module name="Indentation"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround"/>
+
+        <module name="LeftCurly"/>
+        <module name="RightCurly"/>
+
+        <!-- КОД-КАЧЕСТВО -->
+
+        <module name="FinalLocalVariable"/>
+        <module name="EqualsHashCode"/>
+        <module name="HiddenField"/>
+
+        <!--- ЗАЩИТА ОТ ГЛУПОСТЕЙ -->
+
+        <module name="MagicNumber">
+            <property name="ignoreNumbers" value="-1,0,1"/>
+        </module>
+
     </module>
 
 </module>
