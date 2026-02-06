@@ -4,12 +4,22 @@
 
 <module name="Checker">
 
-    <module name="Indentation"/>
-    <module name="NeedBraces"/>
-    <module name="AvoidStarImport"/>
-    <module name="UnusedImports"/>
-    <module name="MethodName"/>
-    <module name="ClassName"/>
-    <module name="LocalVariableName"/>
+    <!-- Проверки на уровне файла -->
+    <module name="LineLength">
+        <property name="max" value="100"/>
+    </module>
+
+    <module name="FileTabCharacter"/>
+
+    <!-- AST-проверки -->
+    <module name="TreeWalker">
+        <module name="NeedBraces"/>
+        <module name="AvoidStarImport"/>
+        <module name="UnusedImports"/>
+
+        <module name="ClassName"/>
+        <module name="MethodName"/>
+        <module name="LocalVariableName"/>
+    </module>
 
 </module>
