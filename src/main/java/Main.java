@@ -36,7 +36,7 @@ public class Main {
             System.out.println();
         }
 
-        long [][] finalMatrix = matrix.multiplyBy(a);
+        final long [][] finalMatrix = matrix.multiplyBy(a);
 
         System.out.println("Результуюча матриця:");
         for (long[] rowIndex : finalMatrix) {
