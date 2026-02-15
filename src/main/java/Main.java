@@ -1,33 +1,6 @@
 import java.util.Scanner;
 public class Main {
     static final Scanner SC = new Scanner(System.in);
-    static final char SIZE = 5;
-
-    public static long operations(int a, long[][] initialMatrix) {
-        final long[][] resultMatrix = new long[SIZE][SIZE];
-
-        long sum = 0;
-        for (int rowIndex = 0; rowIndex < SIZE; rowIndex++) {
-            long max = Long.MIN_VALUE;
-            for (int colIndex = 0; colIndex < SIZE; colIndex++) {
-                resultMatrix[rowIndex][colIndex] = a * initialMatrix[rowIndex][colIndex];
-                if (resultMatrix[rowIndex][colIndex] > max) {
-                    max = resultMatrix[rowIndex][colIndex];
-                }
-            }
-            sum += max;
-        }
-
-        System.out.println("Результуюча матриця:");
-        for (long[] rowIndex : resultMatrix) {
-            for (long colIndex : rowIndex) {
-                System.out.print(colIndex + " ");
-            }
-            System.out.println();
-        }
-
-        return sum;
-    }
 
     public static void main(String[] args) {
         String inputData = "";
@@ -53,23 +26,30 @@ public class Main {
             }
         }
 
-        final long[][] initialMatrix = {
-                {1, 2, 3, 4, 5},
-                {6, 7, 8, 9, 10},
-                {11, 12, 13, 14, 15},
-                {16, 17, 18, 19, 20},
-                {21, 22, 23, 24, 25}};
+        Matrix matrix = new Matrix();
 
         System.out.println("Початкова матриця:");
-        for (long[] rowIndex : initialMatrix) {
+        for (long[] rowIndex : matrix.getMatrix()) {
             for (long colIndex : rowIndex) {
                 System.out.print(colIndex + " ");
             }
             System.out.println();
         }
 
-        final long sum = operations(a, initialMatrix);
+        long [][] finalMatrix = matrix.multiplyBy(a);
 
-        System.out.println("сума найбільших елементів кожного рядка матриці = " + sum);
+        System.out.println("Результуюча матриця:");
+        for (long[] rowIndex : finalMatrix) {
+            for (long colIndex : rowIndex) {
+                System.out.print(colIndex + " ");
+            }
+            System.out.println();
+        }
+        try {
+            long sum = matrix.sumRowMax();
+            System.out.println("сума найбільших елементів кожного рядка матриці = " + sum);
+        } catch (ArithmeticException i) {
+            System.out.println("Числа занадто великі");
+        }
     }
 }
