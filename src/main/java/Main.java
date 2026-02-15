@@ -26,7 +26,7 @@ public class Main {
             }
         }
 
-        Matrix matrix = new Matrix();
+        final Matrix matrix = new Matrix();
 
         System.out.println("Початкова матриця:");
         for (long[] rowIndex : matrix.getMatrix()) {
@@ -46,7 +46,7 @@ public class Main {
             System.out.println();
         }
         try {
-            long sum = matrix.sumRowMax();
+            final long sum = matrix.sumRowMax();
             System.out.println("сума найбільших елементів кожного рядка матриці = " + sum);
         } catch (ArithmeticException i) {
             System.out.println("Числа занадто великі");
